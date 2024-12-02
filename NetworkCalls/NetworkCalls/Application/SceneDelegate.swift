@@ -41,3 +41,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+
+extension SceneDelegate {
+    
+    func switchToView() {
+        if UserDefaults.standard.bool(forKey: UserDefaultConstants.rememberMe) == true {
+            setHome()
+        } else {
+            setLogin()
+        }
+    }
+    
+    func setHome() {
+        UIApplication.shared.keyWindow?.rootViewController = ViewController()
+        UIApplication.shared.keyWindow?.makeKeyAndVisible()
+    }
+    
+    func setLogin() {
+        let loginVC = LoginVC.instantiate(fromAppStoryboard: .main)
+        UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: loginVC)
+        UIApplication.shared.keyWindow?.makeKeyAndVisible()
+    }
+
+}

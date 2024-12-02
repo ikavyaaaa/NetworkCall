@@ -54,3 +54,8 @@ class LoginVM : NSObject {
         }
     }
 }
+
+struct LoginRequestModel {
+    var userName = ""
+    var password = ""
+}

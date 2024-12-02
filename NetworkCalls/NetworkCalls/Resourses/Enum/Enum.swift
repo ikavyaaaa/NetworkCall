@@ -42,3 +42,15 @@ enum MimeType {
     static let csvText = "text/csv"
     static let formData = "application/x-www-form-urlencoded"
 }
+
+enum AppAPI {
+    case login
+    
+    var url: String {
+        switch self {
+        case .login:
+            "loginMobile"
+        }
+    }
+}
+    

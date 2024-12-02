@@ -62,7 +62,7 @@ enum AppBaseURL {
     var desc : String {
         switch self {
         case .development :
-            return  "https://abcd.com/api/"
+            return  "https://abcddev.com/api/"
         case .staging :
             return "https://abcdstaging.com/api/"
         case .production :

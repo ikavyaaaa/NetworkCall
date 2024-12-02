@@ -14,7 +14,7 @@ struct Header {
     static var appTokenHeader: HTTPHeaders {
         return [
             HTTPHeaderField.contentType : ContentType.json,
-            HTTPHeaderField.authentication : "\(HTTPHeaderField.bearer) \("AppToken.shared.userToken")",
+            HTTPHeaderField.authentication : "\(HTTPHeaderField.bearer) \(AppToken.shared.userToken)",
             HTTPHeaderField.acceptLanguage: "en"
         ]
     }
@@ -22,7 +22,7 @@ struct Header {
     static var appAccessTokenHeader: HTTPHeaders {
         return [
             HTTPHeaderField.contentType : ContentType.json,
-            HTTPHeaderField.authentication : "\(HTTPHeaderField.bearer) \("AppToken.shared.accessToken")",
+            HTTPHeaderField.authentication : "\(HTTPHeaderField.bearer) \(AppToken.shared.accessToken)",
             HTTPHeaderField.acceptLanguage: "en"
         ]
     }

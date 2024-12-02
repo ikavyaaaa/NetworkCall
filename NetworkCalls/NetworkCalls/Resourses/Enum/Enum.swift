@@ -54,3 +54,19 @@ enum AppAPI {
     }
 }
     
+enum AppBaseURL {
+    case development
+    case staging
+    case production
+    
+    var desc : String {
+        switch self {
+        case .development :
+            return  "https://abcd.com/api/"
+        case .staging :
+            return "https://abcdstaging.com/api/"
+        case .production :
+            return "https://abcd.com/api/"
+        }
+    }
+}

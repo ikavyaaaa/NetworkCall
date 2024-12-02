@@ -7,6 +7,67 @@
 
 import Foundation
 
+// MARK: - BaseDataResponse
+public struct BaseDataResponse : Codable {
+    public let code : String?
+    public let message : String?
+    
+    public enum CodingKeys: String, CodingKey {
+        case code = "code"
+        case message = "message"
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        code = try values.decodeIfPresent(String.self, forKey: .code)
+        message = try values.decodeIfPresent(String.self, forKey: .message)
+    }
+}
+
+// MARK: - BaseResponse
+public struct BaseResponse<T:Codable> : Codable {
+    public let code : String?
+    public let message : String?
+    public let data : T?
+    
+    public enum CodingKeys: String, CodingKey {
+        case code = "code"
+        case message = "message"
+        case data = "data"
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        code = try values.decodeIfPresent(String.self, forKey: .code)
+        message = try values.decodeIfPresent(String.self, forKey: .message)
+        data = try values.decodeIfPresent(T.self, forKey: .data)
+    }
+}
+
+
+public struct BaseResponses<T:Codable> : Codable {
+    public let code : String?
+    public let message : String?
+    public let data : [T]?
+    
+    public enum CodingKeys: String, CodingKey {
+        case code = "code"
+        case message = "message"
+        case data = "data"
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        code = try values.decodeIfPresent(String.self, forKey: .code)
+        message = try values.decodeIfPresent(String.self, forKey: .message)
+        data = try values.decodeIfPresent([T].self, forKey: .data)
+    }
+}
+
+struct EmptyData : Codable {
+    
+}
+
 public struct TokenModel : Codable {
     public let accessToken : String?
     public let refreshToken : String?
